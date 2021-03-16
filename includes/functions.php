@@ -16,7 +16,12 @@
 }
 
 
-
+function getAllLists(){
+    $conn = openDatabaseConn();
+    $stmt = $conn->prepare("SELECT * FROM lists");
+    $stmt->execute();
+    return $result = $stmt->fetchAll();
+}
 
 
 
