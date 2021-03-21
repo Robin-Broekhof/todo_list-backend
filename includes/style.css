@@ -9,16 +9,28 @@ body {
 }
 
 .main-page {
-    width: 1400px;
+    width: 1200px;
     margin: 0 auto;
     background-color: white;
     height: 100vh;
 }
 
 .card {
-    width: 700px;
+    width: 400px;
 }
 
+
+
+.edit-lists {
+    float: right;
+}
+
+
+
+
+
+
+/*  boostrap changes*/
 .row {
     padding: 0  !important;
     margin: 0  !important;
@@ -26,4 +38,8 @@ body {
 
 .cardtitle {
     font-size: 322px !important;
+}
+
+ h3 {
+    display: inline ;
 }
