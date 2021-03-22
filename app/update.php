@@ -19,7 +19,7 @@ foreach($listdata as $data){
         <button name="submit" type="submit">Update</button>
     </form>
 
-
+    <a href="deletelist.php?list_id=<?=$data["list_id"]?>" class="btn btn-danger">DELETE</a>
 
 <?php
 }

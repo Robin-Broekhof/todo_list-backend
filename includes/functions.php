@@ -15,7 +15,6 @@
     }
 }
 
-
 function getAllLists(){
     $conn = openDatabaseConn();
     $stmt = $conn->prepare("SELECT * FROM lists");
@@ -32,17 +31,39 @@ function getSingleList(){
 }
 
 function updateList(){
+    $conn = openDatabaseConn();
     if (isset($_POST['submit'])) {
-        $conn = openDatabaseConn();
         $id = $_GET['list_id'];
         $name = $_POST['name'];
 
         $stmt = $conn->prepare("UPDATE lists SET name = :name where list_id = '$id'");
 
-
         $stmt->bindParam(":name", $name);
-        
         $stmt->execute();
         header("location: index.php");
     };
+}
+
+
+function createList(){
+    $conn = openDatabaseConn();
+    if (isset($_POST['submit'])) {
+    
+        $name = $_POST['name'];
+
+        $stmt = $conn->prepare("INSERT INTO lists SET name = :name");
+
+        $stmt->bindParam(":name", $name);
+        $stmt->execute();
+        header("location: index.php");
+    };
+}
+
+
+function deleteList(){
+    $conn = openDatabaseConn();
+    $id = $_GET['list_id'];
+    $stmt = $conn->prepare("DELETE FROM lists where list_id = '$id'");
+    $stmt->execute();
+    
 }
