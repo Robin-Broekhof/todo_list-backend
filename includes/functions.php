@@ -15,12 +15,31 @@
     }
 }
 
+
+
+
+
+
+
+
 function getAllLists(){
     $conn = openDatabaseConn();
     $stmt = $conn->prepare("SELECT * FROM lists");
     $stmt->execute();
     return $result = $stmt->fetchAll();
 }
+function listToTaskJoin(){
+    $conn = openDatabaseConn();
+    $stmt = $conn->prepare("SELECT lists.list_id, lists.name, tasks.description, tasks.status
+                            FROM lists
+                            INNER JOIN tasks 
+                            ON lists.list_id=tasks.list_id; ");
+    $stmt->execute();
+    return $result = $stmt->fetchAll();
+}
+
+
+
 
 function getSingleList(){
     $conn = openDatabaseConn();
@@ -29,6 +48,13 @@ function getSingleList(){
     $stmt->execute();
     return $result = $stmt->fetchAll();
 }
+
+
+
+
+
+
+
 
 function updateList(){
     $conn = openDatabaseConn();
@@ -59,6 +85,27 @@ function createList(){
     };
 }
 
+function createTask(){
+    $conn = openDatabaseConn();
+    if (isset($_POST['submit'])) {
+        $list_id = $_GET['list_id'];
+        $description = $_POST['description'];
+        $status = $_POST['status'];
+
+        $stmt = $conn->prepare("INSERT INTO tasks SET description = :description, status = :status, list_id =:list_id");
+
+        $stmt->bindParam(":list_id", $list_id);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":status", $status);
+        $stmt->execute();
+        header("location: index.php");
+    };
+}
+
+
+
+
+
 
 function deleteList(){
     $conn = openDatabaseConn();
@@ -67,3 +114,30 @@ function deleteList(){
     $stmt->execute();
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
