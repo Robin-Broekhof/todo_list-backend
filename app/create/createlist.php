@@ -1,5 +1,5 @@
 <?php
-    require("../includes/head.php");
+    require("../../includes/head.php");
 
     $create = createList();
 ?>
