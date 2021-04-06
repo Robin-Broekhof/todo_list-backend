@@ -6,14 +6,14 @@
 ?>
 
     <form method="POST">
-        <label for="id">id:</label><input type="text" name="id" id="id" value=" <?= $id ?>" ><br>
+        <label hidden for="id">id:</label><input hidden type="text" name="id" id="id" value=" <?= $id ?>" >
         <label for="description">description:</label><input type="text" name="description" id="description" value="" ><br><label for="status">Status:</label>
         <select  name="status" id="status">
             <option value="todo" >todo</option>
             <option value="doing">doing</option>
             <option value="done"  >done</option>
         </select><br>
-        <label for="length">Length:</label><input type="number" min="0" max="120" step="5" name="length" id="length"><a>minutes (max 120)</a><br>
+        <label for="duration">Duration:</label><input type="number" min="0" max="999" step="5" name="duration" id="duration"><a>minutes (intervals of 5)</a><br>
        
     
 

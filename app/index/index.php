@@ -2,9 +2,14 @@
     require("../../includes/head.php");
     $taskdata = listToTaskJoin();
     $listdata = getAllLists();
+
 ?>
 
 <a href="../create/createlist.php" class="btn btn-primary">create list</a>
+
+
+
+ 
 
 
 <div class=" row">
@@ -32,7 +37,7 @@ foreach($listdata as $data0){
                             <a class="task-status-text"><?= $data1["status"] ?></a>
                         </div>
                         <div class="col-4">
-                            <a>~<?= $data1["length"] ?> minutes</a>
+                            <a>~<?= $data1["duration"] ?> minutes</a>
                         </div>
                         <div class="col-4">
                             <a href="../update/updatetask.php?task_id=<?=$data1["task_id"]?>" class="btn btn-warning edit-lists">Update</a>

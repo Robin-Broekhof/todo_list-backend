@@ -28,17 +28,18 @@ function getAllLists(){
 }
 function listToTaskJoin(){
     $conn = openDatabaseConn();
-    $stmt = $conn->prepare("SELECT lists.list_id, lists.name, tasks.task_id, tasks.description, tasks.status, tasks.length
+    $stmt = $conn->prepare("SELECT lists.list_id, lists.name, tasks.task_id, tasks.description, tasks.status, tasks.duration
                             FROM lists
                             INNER JOIN tasks 
-                            ON lists.list_id=tasks.list_id; ");
+                            ON lists.list_id=tasks.list_id
+                              ");
     $stmt->execute();
     return $result = $stmt->fetchAll();
 }
 
 
 
-
+/** */
 function getSingleList(){
     $conn = openDatabaseConn();
     $id = $_GET["list_id"];
@@ -59,7 +60,7 @@ function getSingleTask(){
 
 
 
-
+/** update functions */
 function updateList(){
     $conn = openDatabaseConn();
     if (isset($_POST['submit'])) {
@@ -79,15 +80,15 @@ function updateTask(){
         $id = $_GET['task_id'];
         $description = $_POST['description'];
         $status = $_POST['status'];
-        $length = $_POST['length'];
+        $duration = $_POST['duration'];
 
 
-        $stmt = $conn->prepare("UPDATE tasks SET description = :description, status = :status, length = :length WHERE task_id = '$id'");
+        $stmt = $conn->prepare("UPDATE tasks SET description = :description, status = :status, duration = :duration WHERE task_id = '$id'");
 
         
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":status", $status);
-        $stmt->bindParam(":length", $length);
+        $stmt->bindParam(":duration", $duration);
         $stmt->execute();
         indexReturn();
     };
@@ -99,7 +100,7 @@ function updateTask(){
 
 
 
-
+/** create functions */
 function createList(){
     $conn = openDatabaseConn();
     if (isset($_POST['submit'])) {
@@ -119,14 +120,14 @@ function createTask(){
         $list_id = $_GET['list_id'];
         $description = $_POST['description'];
         $status = $_POST['status'];
-        $length = $_POST['length'];
+        $duration = $_POST['duration'];
 
-        $stmt = $conn->prepare("INSERT INTO tasks SET description = :description, status = :status, length = :length, list_id =:list_id");
+        $stmt = $conn->prepare("INSERT INTO tasks SET description = :description, status = :status, duration = :duration, list_id =:list_id");
 
         $stmt->bindParam(":list_id", $list_id);
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":status", $status);
-        $stmt->bindParam(":length", $length);
+        $stmt->bindParam(":duration", $duration);
         $stmt->execute();
         indexReturn();
     };
@@ -136,7 +137,7 @@ function createTask(){
 
 
 
-
+/** delete functions */
 function deleteList(){
     $conn = openDatabaseConn();
     $id = $_GET['list_id'];
@@ -157,8 +158,8 @@ function deleteTask(){
 
 
 
-
-function indexReturn(){
+/** function to return to the main page */
+function indexReturn(){ 
     header("location: ../index/index.php");
 }
 

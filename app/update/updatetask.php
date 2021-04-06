@@ -27,7 +27,7 @@ foreach($listdata as $data){
 
 
     <form method="POST">
-        <label for="descriptions">Description:</label><input type="text" name="description" id="description" placeholder="" value="<?= $data["description"]?>"><br>
+        <label for="descriptions">Description:</label><input type="text" name="description" id="description"  value="<?= $data["description"]?>"><br>
         
         
         <label for="status">Status:</label>
@@ -41,7 +41,7 @@ foreach($listdata as $data){
 
 
 
-        <label for="length">Length:</label><input type="number" min="0" max="120" step="5" name="length" id="length" placeholder="" value="<?= $data["length"]?>"><a>minutes</a>
+        <label for="duration">Duration:</label><input type="number" min="0" max="120" step="5" name="duration" id="duration"  value="<?= $data["duration"]?>"><a>minutes  (intervals of 5)</a>
         <br>
     
     
