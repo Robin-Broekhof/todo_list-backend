@@ -15,6 +15,8 @@
     }
 }
 
+    
+
 
 
 
@@ -27,19 +29,31 @@ function getAllLists(){
     return $result = $stmt->fetchAll();
 }
 function listToTaskJoin(){
+    
+    $durationSqlSort = "";
+    if(isset($_POST['time_asc'])) {
+        $durationSqlSort = "ORDER BY tasks.duration asc";
+    }
+
+    if(isset($_POST['time_desc'])) {
+        $durationSqlSort = "ORDER BY tasks.duration desc";
+    }
+
+
+
     $conn = openDatabaseConn();
     $stmt = $conn->prepare("SELECT lists.list_id, lists.name, tasks.task_id, tasks.description, tasks.status, tasks.duration
                             FROM lists
                             INNER JOIN tasks 
                             ON lists.list_id=tasks.list_id
-                              ");
+                            $durationSqlSort   ");
     $stmt->execute();
     return $result = $stmt->fetchAll();
 }
 
 
 
-/** */
+/** used for update to get old data*/
 function getSingleList(){
     $conn = openDatabaseConn();
     $id = $_GET["list_id"];
@@ -162,10 +176,6 @@ function deleteTask(){
 function indexReturn(){ 
     header("location: ../index/index.php");
 }
-
-
-
-
 
 
 

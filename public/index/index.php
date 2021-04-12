@@ -1,15 +1,44 @@
 <?php
-    require("../../includes/head.php");
+
+    require("../../app/php/head.php");
     $taskdata = listToTaskJoin();
     $listdata = getAllLists();
 
+    $timeDirection0 = "time_asc";
+    $durationSqlSort = '';
+    
+    
+    if(isset($_POST['time_asc'])) {
+
+        $timeDirection0 = "time_desc";
+        
+      } 
+      
+      if(isset($_POST['time_desc'])) {
+    
+        $timeDirection0 = "time_asc";
+    
+        
+    }
+   
+    
 ?>
 
 <a href="../create/createlist.php" class="btn btn-primary">create list</a>
 
 
 
- 
+
+<form method="post" action="<?=$_SERVER['SCRIPT_NAME'];?>">
+ Order by Week
+ <button type="submit" name="<?=$timeDirection0?>" class="button" value="1"> Time </button>
+ </form>
+
+
+
+
+
+
 
 
 <div class=" row">
