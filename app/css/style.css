@@ -4,18 +4,20 @@
 }
 
 body {
-    background-color: grey !important;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 38%);
 }
 
 .main-page {
-    width: 1200px;
-    margin: 0 auto;
-    background-color: white;
-    height: 100vh;
 }
 
 .card {
-    width: 400px;
+    width: 400px !important;
+    display: initial !important;
+}
+
+.card-wrapper {
+    display: flex;
 }
 
 .task-status-block {

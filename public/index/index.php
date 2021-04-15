@@ -1,48 +1,47 @@
 <?php
-
     require("../../app/php/head.php");
     $taskdata = listToTaskJoin();
     $listdata = getAllLists();
 
     $timeDirection0 = "time_asc";
-    $durationSqlSort = '';
+    $durationSqlSort = "";
+    $currentDuration = "";
     
-    
-    if(isset($_POST['time_asc'])) {
 
-        $timeDirection0 = "time_desc";
-        
-      } 
-      
-      if(isset($_POST['time_desc'])) {
-    
-        $timeDirection0 = "time_asc";
-    
+    if(isset($_POST['submit'])) {
+        print("stap1");
+        if($_POST["submit"] == "time_asc"){
+            $timeDirection0 = "time_desc";
+            $currentDuration = "time_asc";
+            print("stap2");
+        } 
         
     }
-   
-    
 ?>
 
 <a href="../create/createlist.php" class="btn btn-primary">create list</a>
 
 
 
-
-<form method="post" action="<?=$_SERVER['SCRIPT_NAME'];?>">
- Order by Week
- <button type="submit" name="<?=$timeDirection0?>" class="button" value="1"> Time </button>
- </form>
-
-
-
-
-
-
+<form method="POST" action="<?=$_SERVER['SCRIPT_NAME'];?>"> Order by Week
+<select>
+        <option>todo</option>
+        <option>doing</option>
+        <option>done</option>
+    </select>
+    <button type="submit" name="submit" value="<?=$timeDirection0?>" class="button"> Time </button>
+</form>
+<br>
 
 
-<div class=" row">
-    <div class=" ">
+
+
+<a href="../index/index.php?value0=10d&value1=20d">de</a>
+
+
+
+
+    <div class="card-wrapper">
 <?php
 foreach($listdata as $data0){
 ?>
@@ -102,5 +101,4 @@ foreach($listdata as $data0){
 }
 ?>
 
-</div>
 </div>

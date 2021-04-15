@@ -31,11 +31,11 @@ function getAllLists(){
 function listToTaskJoin(){
     
     $durationSqlSort = "";
-    if(isset($_POST['time_asc'])) {
+    if(isset($_GET['time_asc'])) {
         $durationSqlSort = "ORDER BY tasks.duration asc";
     }
 
-    if(isset($_POST['time_desc'])) {
+    if(isset($_GET['time_desc'])) {
         $durationSqlSort = "ORDER BY tasks.duration desc";
     }
 
