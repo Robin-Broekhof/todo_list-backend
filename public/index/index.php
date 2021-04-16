@@ -42,7 +42,7 @@
 
 
 <form method="GET" action="<?=$_SERVER['SCRIPT_NAME'];?>"> Sort by status
-<select name="status">
+    <select name="status">
         <option value="all"   >all</option>
         <option value="todo"  <?php if($selectoption == 1){print("selected");}?>>todo</option>
         <option value="doing" <?php if($selectoption == 2){print("selected");}?>>doing</option>
@@ -54,6 +54,9 @@
 <br>
 
 
+<form method="GET" action="<?=$_SERVER['SCRIPT_NAME'];?>"> 
+    <button type="submit" name="sort" value="null"> RESET </button>
+</form>
 
 
 

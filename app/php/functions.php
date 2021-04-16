@@ -35,10 +35,7 @@ function listToTaskJoin(){
         if($_GET["duration"] == "time_asc"){
             $durationSqlSort = "ORDER BY tasks.duration asc";
         }
-    }
-
-    elseif(isset($_GET['duration'])) {
-        if($_GET["duration"] == "time_desc"){
+        elseif($_GET["duration"] == "time_desc"){
             $durationSqlSort = "ORDER BY tasks.duration desc";
         }
     }
