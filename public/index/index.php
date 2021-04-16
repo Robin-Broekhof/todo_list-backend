@@ -6,37 +6,55 @@
     $timeDirection0 = "time_asc";
     $durationSqlSort = "";
     $currentDuration = "";
+    $selectoption = "";
     
 
-    if(isset($_POST['submit'])) {
-        print("stap1");
-        if($_POST["submit"] == "time_asc"){
+    if(isset($_GET["duration"])){
+        if($_GET["duration"] == "time_asc"){
             $timeDirection0 = "time_desc";
             $currentDuration = "time_asc";
-            print("stap2");
-        } 
-        
+        }
+        elseif($_GET["duration"] == "time_desc"){
+            $timeDirection0 = "time_asc";
+            $currentDuration = "time_desc";
+        }
     }
+
+    if(isset($_GET["status"])){
+        if($_GET["status"] == "todo"){
+            $selectoption = 1;
+        }
+        if($_GET["status"] == "doing"){
+            $selectoption = 2;
+        }
+        if($_GET["status"] == "done"){
+            $selectoption = 3;
+        }
+    }
+
+
+
 ?>
 
 <a href="../create/createlist.php" class="btn btn-primary">create list</a>
 
 
 
-<form method="POST" action="<?=$_SERVER['SCRIPT_NAME'];?>"> Order by Week
-<select>
-        <option>todo</option>
-        <option>doing</option>
-        <option>done</option>
+
+<form method="GET" action="<?=$_SERVER['SCRIPT_NAME'];?>"> Sort by status
+<select name="status">
+        <option value="all"   >all</option>
+        <option value="todo"  <?php if($selectoption == 1){print("selected");}?>>todo</option>
+        <option value="doing" <?php if($selectoption == 2){print("selected");}?>>doing</option>
+        <option value="done"  <?php if($selectoption == 3){print("selected");}?>>done</option>
     </select>
-    <button type="submit" name="submit" value="<?=$timeDirection0?>" class="button"> Time </button>
+    <button type="submit"> Sort </button>
+    <button type="submit" name="duration" value="<?=$timeDirection0?>"> Time </button>
 </form>
 <br>
 
 
 
-
-<a href="../index/index.php?value0=10d&value1=20d">de</a>
 
 
 

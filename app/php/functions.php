@@ -31,14 +31,28 @@ function getAllLists(){
 function listToTaskJoin(){
     
     $durationSqlSort = "";
-    if(isset($_GET['time_asc'])) {
-        $durationSqlSort = "ORDER BY tasks.duration asc";
+    if(isset($_GET['duration'])) {
+        if($_GET["duration"] == "time_asc"){
+            $durationSqlSort = "ORDER BY tasks.duration asc";
+        }
     }
 
-    if(isset($_GET['time_desc'])) {
-        $durationSqlSort = "ORDER BY tasks.duration desc";
+    elseif(isset($_GET['duration'])) {
+        if($_GET["duration"] == "time_desc"){
+            $durationSqlSort = "ORDER BY tasks.duration desc";
+        }
     }
 
+    $statusSqlSort = "";
+    if(isset($_GET["status"])){
+        if($_GET["status"] == "all"){
+            
+        }
+        elseif($_GET["status"] == "todo" or $_GET["status"] == "doing" or $_GET["status"] == "done"){
+            $statusSqlSort = $_GET["status"];
+            $statusSqlSort = "WHERE tasks.status='$statusSqlSort'";
+        }
+    }
 
 
     $conn = openDatabaseConn();
@@ -46,7 +60,9 @@ function listToTaskJoin(){
                             FROM lists
                             INNER JOIN tasks 
                             ON lists.list_id=tasks.list_id
-                            $durationSqlSort   ");
+                            $statusSqlSort
+                            $durationSqlSort   
+                            ");
     $stmt->execute();
     return $result = $stmt->fetchAll();
 }
