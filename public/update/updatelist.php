@@ -10,7 +10,7 @@
 foreach($listdata as $data){
 ?>
     <form method="POST">
-        <label for="name">Name:</label><input type="text" name="name" id="name" value="<?= $data["name"]?>"><br>
+        <label for="name">Name:</label><input type="text" name="name" value="<?= $data["name"]?>"><br>
     
     
     

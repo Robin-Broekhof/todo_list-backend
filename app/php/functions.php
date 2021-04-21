@@ -19,17 +19,17 @@
 
 
 
-
-
-
+/** get all list data */
 function getAllLists(){
     $conn = openDatabaseConn();
     $stmt = $conn->prepare("SELECT * FROM lists");
     $stmt->execute();
     return $result = $stmt->fetchAll();
 }
+/** to link tasks to their respective list */
 function listToTaskJoin(){
     
+    /** if's for sorting by duration */
     $durationSqlSort = "";
     if(isset($_GET['duration'])) {
         if($_GET["duration"] == "time_asc"){
@@ -40,6 +40,7 @@ function listToTaskJoin(){
         }
     }
 
+    /** if's for sorting by a status */
     $statusSqlSort = "";
     if(isset($_GET["status"])){
         if($_GET["status"] == "all"){

@@ -5,7 +5,7 @@
 ?>
 
     <form method="POST">
-        <label for="name">Name:</label><input type="text" name="name" id="name" value="" ><br>
+        <label for="name">Name:</label><input type="text" name="name"><br>
     
     
     

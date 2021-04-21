@@ -36,12 +36,11 @@
 
 ?>
 
-<a href="../create/createlist.php" class="btn btn-primary">create list</a>
 
 
 
 
-<form method="GET" action="<?=$_SERVER['SCRIPT_NAME'];?>"> Sort by status
+<form method="GET" action="<?=$_SERVER["SCRIPT_NAME"];?>"> Sort by status
     <select name="status">
         <option value="all"   >all</option>
         <option value="todo"  <?php if($selectoption == 1){print("selected");}?>>todo</option>
@@ -51,15 +50,16 @@
     <button type="submit"> Sort </button>
     <button type="submit" name="duration" value="<?=$timeDirection0?>"> Time </button>
 </form>
-<br>
 
 
-<form method="GET" action="<?=$_SERVER['SCRIPT_NAME'];?>"> 
+
+<form method="GET" action="<?=$_SERVER["SCRIPT_NAME"];?>"> 
     <button type="submit" name="sort" value="null"> RESET </button>
-</form>
+</form><br>
 
 
 
+<a href="../create/createlist.php" class="btn btn-primary">create list</a>
 
 
     <div class="card-wrapper">
